@@ -1,0 +1,33 @@
+---
+title: R Markdown Anatomy
+date: '2019-08-29'
+slug: 01-rmd-anatomy
+categories: [slides]
+tags: []
+subtitle: 'Session 01'
+summary: 'Session 01'
+lastmod: '2019-08-29T11:21:55-07:00'
+featured: no
+image:
+  caption: '[Photo by Samuel Zeller on Unsplash](https://unsplash.com/photos/FvNp_SY4kF0)'
+  focal_point: ''
+  preview_only: yes
+projects: []
+weight: 2
+links:
+- icon: images
+  icon_pack: fas
+  name: slides
+  url: /slides/01-rmd-anatomy.html
+---
+
+
+```{r echo=FALSE}
+knitr::include_url("/slides/01-rmd-anatomy.html")
+```
+
+# Relevant resources
+
++ [R4DS R Markdown](https://r4ds.had.co.nz/r-markdown.html)
++ [R Markdown: The Definitive Guide on Markdown syntax](https://bookdown.org/yihui/rmarkdown/markdown-syntax.html)
++ [R Markdown: The Definitive Guide on R code](https://bookdown.org/yihui/rmarkdown/r-code.html)

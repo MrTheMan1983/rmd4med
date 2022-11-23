@@ -1,0 +1,32 @@
+---
+title: Outputs & Tables
+date: '2019-08-29'
+slug: 02-output-tables
+categories: [slides]
+tags: []
+subtitle: 'Session 02'
+summary: 'Session 02'
+lastmod: '2019-08-29T11:21:55-07:00'
+featured: no
+image:
+  caption: '[Photo by Samuel Zeller on Unsplash](https://unsplash.com/photos/FvNp_SY4kF0)'
+  focal_point: ''
+  preview_only: yes
+projects: []
+weight: 3
+links:
+- icon: images
+  icon_pack: fas
+  name: slides
+  url: /slides/02-output-tables.html
+---
+
+
+```{r echo=FALSE}
+knitr::include_url("/slides/02-output-tables.html")
+```
+
+# Relevant resources
+
++ [R4DS R Markdown formats](https://r4ds.had.co.nz/r-markdown-formats.html)
++ [R Markdown: The Definitive Guide on output formats](https://bookdown.org/yihui/rmarkdown/output-formats.html)

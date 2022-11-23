@@ -1,0 +1,34 @@
+---
+title: Graphics for Communication
+date: '2019-08-29'
+slug: 04-graphics
+categories: [slides]
+tags: []
+subtitle: 'Session 04'
+summary: 'Session 04'
+lastmod: '2019-08-29T11:21:55-07:00'
+featured: no
+image:
+  caption: '[Photo by Samuel Zeller on Unsplash](https://unsplash.com/photos/FvNp_SY4kF0)'
+  focal_point: ''
+  preview_only: yes
+projects: []
+weight: 5
+links:
+- icon: images
+  icon_pack: fas
+  name: slides
+  url: /slides/04-graphics.html
+---
+
+```{r echo=FALSE}
+knitr::include_url("/slides/04-graphics.html")
+```
+
+# Relevant resources
+
++ [Linking rticles to bookdown](https://bookdown.org/yihui/rmarkdown/rticles-bookdown.html)
++ [R4DS Graphics for communication](https://r4ds.had.co.nz/graphics-for-communication.html)
++ [R Markdown: The Definitive Guide chapter on PowerPoint presentations](https://bookdown.org/yihui/rmarkdown/powerpoint-presentation.html)
++ [R Markdown docs on `powerpoint_presentation` output format](https://rmarkdown.rstudio.com/docs/reference/powerpoint_presentation.html)
++ [RStudio webinar _Make PowerPoint Presentations with R Markdown_ ](https://resources.rstudio.com/webinars/make-powerpoint-presentations-with-r-markdown-nathan-stephens)

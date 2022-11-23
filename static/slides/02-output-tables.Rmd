@@ -1,0 +1,478 @@
+---
+title: "Outputs & Tables"
+session: "02"
+subtitle: "R Markdown for Medicine"
+author: Alison Hill
+date: "`r Sys.Date()`"
+output:
+  xaringan::moon_reader:
+    css: ["default", "assets/css/my-theme.css", "assets/css/my-fonts.css"]
+    seal: false 
+    lib_dir: libs
+    nature:
+      highlightStyle: tomorrow-night-eighties
+      highlightLanguage: ["r", "yaml", "markdown"]
+      slideNumberFormat: "" 
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+      beforeInit: "https://platform.twitter.com/widgets.js"
+    includes:
+      in_header: assets/header.html  
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+episode_counter <- 0
+```
+
+```{r packages, include=FALSE}
+library(countdown)
+library(ymlthis)
+library(tidyverse)
+library(arsenal)
+library(janitor)
+```
+
+
+class: title-slide, center, middle
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #ffffffcc;"></i>
+  <strong class="fa-stack-1x" style="color:#3b4245;">`r rmarkdown::metadata$session`</strong>
+</span> 
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+### `r rmarkdown::metadata$author` &#183; RStudio
+
+#### [rmd4medicine.netlify.com/](https://rmd4medicine.netlify.com/)
+
+
+<!-- this ends up being the title slide since seal = FALSE-->
+
+---
+layout: true
+
+<div class="my-footer"><span>rstudio.cloud/link</span></div>
+
+<!-- this adds the link footer to all slides, depends on my-footer class in css-->
+
+---
+
+go here and log in (free):
+cloud link
+
+---
+
+plot here times knitted so far
+
+---
+
+# Pop quiz
+
+_(discuss with a neighbor)_
+
+Which of the following is **NOT** a part of R Markdown basic anatomy?
+
+1. Metadata (written in YAML).
+
+1. Text (written in Markdown).
+
+1. CSS.
+
+1. Code (<i class="fab fa-r-project"></i> or other).
+
+1. Output.
+
+
+---
+
+# Match these! 
+
+_(discuss with a neighbor)_
+
+.pull-left[
+
++ Metadata
+
++ text
+
++ Code
+
++ Output
+]
+
+.pull-right[
+
++ Markdown
+
++ `knitr`
+
++ <i class="fab fa-r-project"></i> (or other programming language)
+
++ YAML
+]
+
+---
+class: middle, center
+background-image: url(images/pierre-acobas-nbD0VmKnPrI-unsplash.jpg)
+background-position: right
+background-size: contain
+
+---
+class: your-turn
+
+# Your turn
+
+## Spruce up the doc
+
+Let's all take a look at this R Markdown document together.
+
+
+
+.pull-left[
+
+Add or edit text...
+
++ Headers
++ Lists (<i class="fas fa-list-ul"></i> or <i class="fas fa-list-ol"></i>)
++ Text formatting like **bold** or _italics_
+]
+
+.pull-right[
+
+Add or edit code...
+
++ Chunk labels
++ Chunk options
+
+]
+
+```{r echo = FALSE}
+countdown(minutes = 5)
+```
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+--
+
+# Output formats
+
+--
+
+What do you want to make?
+
+---
+
+Built in formats (in the `rmarkdown` package)
+
+versus
+
+extensions (different packages that extend output formats available to you)
+
+---
+class: your-turn
+
+# Your turn
+
+## Use a different built-in format
+
+Use the drop-down menu for the `r emo::ji("yarn")` **Knit** button and try:
+
+1. Knitting to Word
+
+1. Knitting to PDF
+
+```{r echo = FALSE}
+countdown(minutes = 2)
+```
+
+
+---
+
+# Temp check `r emo::ji("thermometer")`
+
+Does your current YAML look like this?
+
+```{r echo=FALSE}
+yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(html_document(toc = TRUE,
+                           toc_float = TRUE,
+                           theme = "flatly")) %>% 
+  asis_yaml_output()
+```
+
+---
+class: your-turn
+
+# Your turn
+
+## Use your YAML instead
+
+You just used the drop-down `r emo::ji("yarn")` **Knit** button to knit to Word and PDF. Now try changing your YAML to:
+
+```{r echo=FALSE}
+yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(html_document(toc = TRUE, toc_float = TRUE, theme = "flatly"), 
+             word_document(toc = TRUE), 
+             pdf_document()) %>% 
+  asis_yaml_output()
+```
+
+Now click `r emo::ji("yarn")` **Knit** - what do you notice?
+
+
+```{r echo = FALSE}
+countdown(minutes = 2)
+```
+
+---
+class: your-turn
+
+# Your turn
+
+## Use an extension package
+
+.pull-left[
+
+1. Edit your YAML again! Change the `output:` key to `distill::distill_article()` (note: this requires you to install the [`distill` package](https://rstudio.github.io/distill/) on your own computer)
+
+1. `r emo::ji("yarn")` **Knit** to distill_article.
+
+1. _If this was easy, add a table of contents._
+]
+
+.pull-right[
+
+```{r echo = FALSE}
+yml_empty() %>% 
+  yml_author("Your name here") %>% 
+  yml_title("Your title here") %>% 
+  yml_output(distill::distill_article()) %>% 
+  asis_yaml_output()
+```
+]
+
+```{r echo = FALSE}
+countdown(minutes = 2)
+```
+
+
+---
+name: distill_article
+
+
+
+
+???
+
+At this point, I'm going to stick with the distill_article output format for the rest of this session.
+
+---
+class: middle, center, inverse
+
+<span class="fa-stack fa-4x">
+  <i class="fa fa-circle fa-stack-2x" style="color: #fff;"></i>
+  <strong class="fa-stack-1x" style="color:#2f5275;">`r (episode_counter <- episode_counter + 1)` </strong>
+</span> 
+
+--
+
+# Tables
+
+---
+
+Some deep thoughts on tables and R Markdown here
+
+jen's simplicity versus complexity
+
+also tables from you (usually words) versus tables from R (usually numbers)
+
+for print versus online versus word
+
+for eda versus publication
+
+
+---
+class: center
+
+# Markdown tables
+
+.pull-left[
+
+```markdown
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+| 03:00 - 03:50 | 3       | Workflow |
+| 03:50 - 04:00 |         | *Break*  |
+| 04:00 - 04:45 | 4       | Graphics |
+| 04:45 - 05:00 | 5       | Wrap-up  |
+```
+]
+
+--
+
+.pull-right[
+
+| Time          | Session | Topic    |
+|:--------------|:-------:|---------:|
+| _left_        | _center_| _right_  |
+| 01:00 - 01:50 | 1       | Anatomy  |
+| 01:50 - 02:00 |         | *Break*  |
+| 02:00 - 02:45 | 2       | Tables   |
+| 02:45 - 03:00 |         | *Break*  |
+| 03:00 - 03:50 | 3       | Workflow |
+| 03:50 - 04:00 |         | *Break*  |
+| 04:00 - 04:45 | 4       | Graphics |
+| 04:45 - 05:00 | 5       | Wrap-up  |
+
+]
+
+---
+
+# Let's try using data now
+
+---
+
+# Simple tables
+
+
+.pull-left[
+`knitr::kable()`
+
+it knows format automatically
+
+```{r echo = FALSE}
+mockdata <- read_csv(here::here("static/mockpaper/data/mockdata.csv")) %>%
+  mutate(fu_fct = fct_recode(as.factor(fu_stat), 
+                             "Lived" = "1", "Died" = "2"))  
+```
+
+]
+
+.pull-right[
+for eda
+
+Janitor
+]
+
+---
+
+# Interactive tables
+
+online options: DT
+
+---
+
+print + online
+
+gt
+
+---
+
+# Table One
+
+arsenal (need `knitr` asis options)
+
+```{r results='asis'}
+mockdata %>% 
+  tableby(arm ~ age, data = .) %>% 
+  summary(digits = 2, digits.p = 3, digits.pct=1, 
+          pfootnote=TRUE,
+          title = "Table One: Demographics")
+```
+
+---
+
+.pull-left[
+
+```{r}
+mockdata_gender <- mockdata %>% 
+  tableby(arm ~ sex, data = .) %>% 
+  summary(digits = 2, digits.p = 3, digits.pct=1, 
+          pfootnote=TRUE,
+          title = "Table One: Demographics")
+labels(mockdata_gender) <- c(sex = "Gender")
+```
+]
+
+.pull-right[
+```{r results='asis'}
+mockdata_gender
+```
+]
+
+
+---
+class: your-turn
+
+# Your turn
+
+## Spruce up the tables
+
+pick one table to include?
++ Not fond of so many decimal places?
++ Edit the summary function to add `digit` arguments between the parentheses,
+like `digits = 2, digits.p = 3, digits.pct=1`
++ You can also edit the labels for the variables in the labels function.
+
+To exclude, use your `knitr` code chunk options (do not delete!)
+
+add text to frame the table and what it is showing
+
+```{r echo = FALSE}
+countdown(minutes = 5)
+```
+
+---
+
+an adverse events table
+
+maybe do some fancier regex worthy stuff to be able to cast all of the adverse events as factors easily
+
+that was a good test- see how tableone deals with factors versus numbers
+
+think about when pfootnote should be TRUE
+
+```{r results='asis'}
+mockdata <- mockdata %>% 
+  mutate(low_wbc = as.factor(low_wbc))
+labels(mockdata) <- c(age = "Age, years", sex = "Gender")
+mockdata %>% 
+  tableby(arm ~ low_wbc + neuropathy + blood_clot, data = .) %>% 
+  summary(digits = 2, digits.p = 3, digits.pct=1, 
+          pfootnote=FALSE,
+          title = "Table One: Demographics") ->
+table_two
+table_two
+```
+
+
+---
+class: middle, center
+
+# `r emo::ji("stopwatch")`
+
+# Time for a break!
+
+```{r echo = FALSE}
+countdown(minutes = 15, update_every = 15)
+```
